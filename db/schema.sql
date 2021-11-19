@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS rascal_db;
+CREATE DATABASE rascal_db;
