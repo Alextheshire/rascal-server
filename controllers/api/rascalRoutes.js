@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
         res.json(err)
     })
 })
-router.get("/id", (req, res) => {
+router.get("/:id", (req, res) => {
     Rascal.findByPk(req.params.id).then(rascal => {
         res.json(rascal)
     }).catch(err => {
@@ -20,6 +20,11 @@ router.get("/id", (req, res) => {
     })
 })
 router.post("/new",(req,res)=>{
-    Rascal.create(req.body)
+    Rascal.create(req.body).then(newRascal=>{
+        res.json(newRascal)
+    }).catch(err=>{
+        console.log(err)
+        res.json(err)
+    })
 })
 module.exports = router
