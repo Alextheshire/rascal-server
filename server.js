@@ -1,29 +1,19 @@
 const express = require('express');
 const sequelize = require("./config/connection.js")
-const session = require("express-session");
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3005;
-
+const cors = require("cors");
 
 
 const routes = require("./controllers");
 const {User} = require('./models');
-
+//LOCAL
+app.use(cors())
+//DEPLOYED
+// app.use(cors({
+//     origin:["deployedreactappnotrailingslash"]
+// }))
 app.use(express.static("public"));
-
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24
-    },
-    store: new SequelizeStore({
-        db: sequelize
-    })
-}))
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
