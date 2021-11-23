@@ -9,7 +9,8 @@ Rascal.init({
         type: DataTypes.STRING
     },
     age: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     },
     happiness:{
         type: DataTypes.INTEGER
@@ -24,7 +25,7 @@ Rascal.init({
         type: DataTypes.INTEGER
     },
     // attachments:{
-    //     type: DataTypes.ARRAY
+    //     type: DataTypes.ARRAY(DataTypes.)
     // }
     
 },{

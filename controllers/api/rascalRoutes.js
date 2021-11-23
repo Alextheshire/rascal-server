@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { User, Rascal } = require('../../models');
+const tokenAuth = require("../../middleware/tokenAuth")
 
 
 router.get("/", (req, res) => {
@@ -11,7 +12,7 @@ router.get("/", (req, res) => {
         res.json(err)
     })
 })
-router.get("/:id", (req, res) => {
+router.get("/lookup/:id", (req, res) => {
     Rascal.findByPk(req.params.id).then(rascal => {
         res.json(rascal)
     }).catch(err => {
@@ -19,9 +20,17 @@ router.get("/:id", (req, res) => {
         res.json(err)
     })
 })
-router.post("/new",(req,res)=>{
-    Rascal.create(req.body).then(newRascal=>{
+router.post("/new",tokenAuth,(req,res)=>{
+    Rascal.create({...req.body,UserId:req.user.id}).then(newRascal=>{
         res.json(newRascal)
+    }).catch(err=>{
+        console.log(err)
+        res.json(err)
+    })
+})
+router.put("/update",tokenAuth,(req,res)=>{
+    Rascal.update(req.body,{where:{UserId:1}}).then(updatedRascal=>{
+        res.json(updatedRascal)
     }).catch(err=>{
         console.log(err)
         res.json(err)
