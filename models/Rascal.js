@@ -23,9 +23,9 @@ Rascal.init({
     energy:{
         type: DataTypes.INTEGER
     },
-    attachments:{
-        type: DataTypes.ARRAY
-    }
+    // attachments:{
+    //     type: DataTypes.ARRAY
+    // }
     
 },{
     sequelize
