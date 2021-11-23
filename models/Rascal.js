@@ -12,6 +12,9 @@ Rascal.init({
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
+    color:{
+        type:DataTypes.STRING
+    },
     happiness:{
         type: DataTypes.INTEGER
     },
