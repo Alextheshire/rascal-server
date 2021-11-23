@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const tokenAuth = require("../../middleware/tokenAuth")
 
+// Routes for finding users
 router.get("/", (req, res) => {
     User.findAll().then(users => res.json(users)).catch(err => {
         console.log(err)
@@ -61,9 +62,13 @@ router.post("/login",(req,res)=>{
     })
 })
 
-router.get("/test",tokenAuth,(req,res)=> {
-    console.log("hello")
-    res.send("Authenticated")
+router.get("/verify",tokenAuth,(req,res)=> {
+    User.findByPk(req.user.id).then(foundUser=>{
+        res.json(foundUser)
+    }).catch(err=>{
+        console.log(err)
+        res.json({err:err,message:"InvalidToken"})
+    })
 })
 
 module.exports = router

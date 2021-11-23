@@ -22,6 +22,9 @@ Rascal.init({
     },
     energy:{
         type: DataTypes.INTEGER
+    },
+    attachments:{
+        type: DataTypes.ARRAY
     }
     
 },{
