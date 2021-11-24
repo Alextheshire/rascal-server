@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User, Rascal } = require('../../models');
 const tokenAuth = require("../../middleware/tokenAuth")
+const sequelize = require("../../config/connection.js")
 
 
 router.get("/", (req, res) => {
@@ -38,6 +39,9 @@ router.put("/update",tokenAuth,(req,res)=>{
 })
 router.delete('/deletethisroute',(req,res)=>{
     // this will delete ALL data, including users
-    sequelize.sync({ force: true })
+    sequelize.sync({ force: true }).then(()=>{
+        res.send("task complete")
+    }
+    )
 })
 module.exports = router
