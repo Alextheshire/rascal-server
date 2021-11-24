@@ -29,11 +29,15 @@ router.post("/new",tokenAuth,(req,res)=>{
     })
 })
 router.put("/update",tokenAuth,(req,res)=>{
-    Rascal.update(req.body,{where:{UserId:1}}).then(updatedRascal=>{
+    Rascal.update(req.body,{where:{UserId:req.user.id}}).then(updatedRascal=>{
         res.json(updatedRascal)
     }).catch(err=>{
         console.log(err)
         res.json(err)
     })
+})
+router.delete('/deletethisroute',(req,res)=>{
+    // this will delete ALL data, including users
+    sequelize.sync({ force: true })
 })
 module.exports = router
