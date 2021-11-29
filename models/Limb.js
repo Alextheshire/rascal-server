@@ -28,6 +28,7 @@ Limb.init({
         defaultValue:true
     }
     
-})
-
+},{
+        sequelize
+    });
 module.exports = Limb;
