@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
         res.json(err)
     })
 })
-router.get("/lookup/:id", (req, res) => {
-    Rascal.findByPk(req.params.id).then(rascal => {
+router.get("/load/:id", (req, res) => {
+    Rascal.findOne({UserId:req.params.id}).then(rascal => {
         res.json(rascal)
     }).catch(err => {
         console.log(err)

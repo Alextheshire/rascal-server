@@ -8,7 +8,7 @@ Rascal.init({
     name:{
         type: DataTypes.STRING
     },
-    age: {
+    level: {
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
@@ -21,15 +21,15 @@ Rascal.init({
     hunger:{
         type: DataTypes.INTEGER
     },
-    attention:{
+    love:{
         type: DataTypes.INTEGER
     },
-    energy:{
+    care:{
         type: DataTypes.INTEGER
     },
-    // attachments:{
-    //     type: DataTypes.ARRAY(DataTypes.)
-    // }
+    body:{
+        type:DataTypes.STRING
+    }
     
 },{
     sequelize
