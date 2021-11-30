@@ -26,6 +26,7 @@ router.post('/post/:id',(req,res)=>{
     })
 })
 router.put('/put/:id',(req,res)=>{
+    console.log(req.body)
     Limb.update(req.body,{where:{RascalId:req.params.id,id:req.body.id}}).then(e=>{
         res.json("success")
     }).catch(err=>{

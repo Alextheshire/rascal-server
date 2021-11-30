@@ -52,6 +52,7 @@ router.post("/login",(req,res)=>{
                     token:token,
                     user:foundUser
                 });
+                User.update({lastLoggedOn:Date.now()},{where:{id:foundUser.id}})
             }else{
                 res.json("Incorrect Credentials")
             }
