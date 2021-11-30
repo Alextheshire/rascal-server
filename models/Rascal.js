@@ -16,15 +16,9 @@ Rascal.init({
         type:DataTypes.STRING
     },
     happiness:{
-        type: DataTypes.INTEGER
+        type: DataTypes.DECIMAL(6,2)
     },
     hunger:{
-        type: DataTypes.INTEGER
-    },
-    love:{
-        type: DataTypes.INTEGER
-    },
-    care:{
         type: DataTypes.INTEGER
     },
     body:{

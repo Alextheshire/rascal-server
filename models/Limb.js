@@ -9,19 +9,19 @@ Limb.init({
         type: DataTypes.STRING
     },
     size:{
-        type:DataTypes.DECIMAL
+        type:DataTypes.DECIMAL(10,2)
     },
     pointA:{
-        type: DataTypes.DECIMAL
+        type: DataTypes.DECIMAL(20,10)
     },
     bodyB:{
-        type: DataTypes.DECIMAL
+        type: DataTypes.DECIMAL(20,10)
     },
     pointB_x:{
-        type: DataTypes.DECIMAL
+        type: DataTypes.DECIMAL(20,10)
     },
     pointB_y:{
-        type: DataTypes.DECIMAL
+        type: DataTypes.DECIMAL(20,10)
     },
     equipped:{
         type:DataTypes.BOOLEAN,
