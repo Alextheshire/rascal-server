@@ -25,7 +25,11 @@ Limb.init({
     },
     equipped:{
         type:DataTypes.BOOLEAN,
-        defaultValue:true
+        defaultValue:false
+    },
+    type:{
+        type:DataTypes.STRING,
+        default: "item"
     }
     
 },{

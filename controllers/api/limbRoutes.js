@@ -34,6 +34,13 @@ router.put('/put/:id',(req,res)=>{
         res.json(err)
     })
 })
+router.delete('/delete/:id',(req,res)=>{
+    Limb.destroy({
+        where:{
+            id:req.params.id
+        }
+    })
+})
 
 
 module.exports = router
