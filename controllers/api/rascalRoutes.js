@@ -49,13 +49,23 @@ router.put("/update/:id",(req,res)=>{
 // //////////This drops database, do not use
 router.delete('/deletethisroute',(req,res)=>{
     // this will delete ALL data, including users
-    sequelize.sync({ force: true }).then(()=>{
-        res.send("task complete")
-    }
-    ).catch(err=>{
-        console.log(err)
-        res.send(err)
-    })
+    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(function() {
+        sequelize
+            .sync({
+                force: true
+            }).then(function() {
+                sequelize.query('SET FOREIGN_KEY_CHECKS = 1').then(function() {
+                    console.log('Database synchronised.');
+                    res.send("success")
+                });
+            }).catch(function(err) {
+                console.log(err);
+                res.json(err)
+            });;
+    }).catch(function(err) {
+        console.log(err);
+        res.json(err)
+    });
 })
 // ??????? Test Route
 router.post('/postwithheaders',tokenAuth,(req,res)=>{
