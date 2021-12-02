@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     })
 })
 router.get("/load/:id", (req, res) => {
-    Rascal.findOne({UserId:req.params.id}).then(rascal => {
+    Rascal.findOne({where:{UserId:req.params.id}}).then(rascal => {
         res.json(rascal)
     }).catch(err => {
         console.log(err)
@@ -46,11 +46,19 @@ router.put("/update/:id",(req,res)=>{
         res.json(err)
     })
 })
+// //////////This drops database, do not use
 router.delete('/deletethisroute',(req,res)=>{
     // this will delete ALL data, including users
     sequelize.sync({ force: true }).then(()=>{
         res.send("task complete")
     }
     )
+})
+// ??????? Test Route
+router.post('/postwithheaders',tokenAuth,(req,res)=>{
+    res.json({
+        body:req.body,
+        message:"auth"
+    })
 })
 module.exports = router
