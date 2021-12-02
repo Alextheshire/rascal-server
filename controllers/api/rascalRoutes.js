@@ -21,17 +21,25 @@ router.get("/load/:id", (req, res) => {
         res.json(err)
     })
 })
-router.post("/new",tokenAuth,(req,res)=>{
-    Rascal.create({...req.body,UserId:req.user.id}).then(newRascal=>{
+// router.post("/new",tokenAuth,(req,res)=>{
+//     Rascal.create({...req.body,UserId:req.user.id}).then(newRascal=>{
+//         res.json(newRascal)
+//     }).catch(err=>{
+//         console.log(err)
+//         res.json(err)
+//     })
+// })
+router.post("/new/:id",(req,res)=>{
+    Rascal.create({...req.body,UserId:req.params.id}).then(newRascal=>{
         res.json(newRascal)
     }).catch(err=>{
         console.log(err)
         res.json(err)
     })
 })
-router.put("/update",(req,res)=>{
+router.put("/update/:id",(req,res)=>{
     console.log(req.body)
-    Rascal.update(req.body,{where:{UserId:req.body.UserId}}).then(updatedRascal=>{
+    Rascal.update(req.body,{where:{UserId:req.params.id}}).then(updatedRascal=>{
         res.json(updatedRascal)
     }).catch(err=>{
         console.log(err)

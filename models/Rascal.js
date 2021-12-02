@@ -23,6 +23,9 @@ Rascal.init({
     },
     body:{
         type:DataTypes.STRING
+    },
+    coins:{
+        type:DataTypes.INTEGER
     }
     
 },{

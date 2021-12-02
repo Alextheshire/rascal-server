@@ -6,7 +6,7 @@ const cors = require("cors");
 
 
 const routes = require("./controllers");
-const {User, Rascal, Limbs} = require('./models');
+const {User, Rascal, EquippedItem,UnlockedItem} = require('./models');
 //LOCAL
 app.use(cors())
 //DEPLOYED

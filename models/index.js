@@ -1,18 +1,25 @@
 const User = require("./User");
 const Rascal = require("./Rascal");
-const Limb = require("./Limb");
+const EquippedItem = require("./Equip");
+const UnlockedItem = require("./Unlock")
 
 User.hasOne(Rascal,{
     onDelete: "CASCADE"
 });
 Rascal.belongsTo(User)
 
-Rascal.hasMany(Limb,{
+Rascal.hasMany(EquippedItem,{
     onDelete:"CASCADE"
 })
-Limb.belongsTo(Rascal)
+EquippedItem.belongsTo(Rascal)
+
+Rascal.hasMany(UnlockedItem,{
+    onDelete:"CASCADE"
+})
+UnlockedItem.belongsTo(Rascal)
 module.exports={
     User,
     Rascal,
-    Limb
+    EquippedItem,
+    UnlockedItem
 };
