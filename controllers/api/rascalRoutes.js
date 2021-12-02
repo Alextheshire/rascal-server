@@ -52,7 +52,10 @@ router.delete('/deletethisroute',(req,res)=>{
     sequelize.sync({ force: true }).then(()=>{
         res.send("task complete")
     }
-    )
+    ).catch(err=>{
+        console.log(err)
+        res.send(err)
+    })
 })
 // ??????? Test Route
 router.post('/postwithheaders',tokenAuth,(req,res)=>{
