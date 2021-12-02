@@ -19,9 +19,18 @@ Rascal.init({
         type: DataTypes.DECIMAL(6,2)
     },
     hunger:{
-        type: DataTypes.INTEGER
+        type: DataTypes.DECIMAL(6,2)
     },
     body:{
+        type:DataTypes.STRING
+    },
+    eyes:{
+        type:DataTypes.STRING
+    },
+    mouth:{
+        type:DataTypes.STRING
+    },
+    nose:{
         type:DataTypes.STRING
     },
     coins:{
