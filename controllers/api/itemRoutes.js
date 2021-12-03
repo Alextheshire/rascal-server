@@ -5,7 +5,7 @@ const tokenAuth = require("../../middleware/tokenAuth")
 const sequelize = require("../../config/connection.js")
 
 router.get('/equipped/:id',(req,res)=>{
-    EquippedItem.findAll({RascalId:req.params.id}).then(EquippedItems=>{
+    EquippedItem.findAll({where:{RascalId:req.params.id}}).then(EquippedItems=>{
         res.json(EquippedItems)
     }).catch(err=>{
         console.log(err)
@@ -14,7 +14,7 @@ router.get('/equipped/:id',(req,res)=>{
 })
 
 router.get('/unlocked/:id',(req,res)=>{
-    UnlockedItem.findAll({RascalId:req.params.id}).then(UnlockedItems=>{
+    UnlockedItem.findAll({where:{RascalId:req.params.id}}).then(UnlockedItems=>{
         res.json(UnlockedItems)
     }).catch(err=>{
         console.log(err)
