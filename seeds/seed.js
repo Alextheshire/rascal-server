@@ -17,6 +17,7 @@ const seed = async ()=>{
         {
           
             name:"Bonko",
+            UserId:1,
             level:10,
             color:"white",
             happiness:90,
