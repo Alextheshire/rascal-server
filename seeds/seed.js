@@ -108,6 +108,6 @@ const seed = async ()=>{
 
 
 
-sequelize.sync({force:true}).then(()=>{
+sequelize.sync({force:false}).then(()=>{
     seed();
 })
