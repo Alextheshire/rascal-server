@@ -18,7 +18,7 @@ UnlockedItem.init({
     },
     type:{
         type:DataTypes.STRING,
-        default: "item"
+        defaultValue: "item"
     }
     
 },{
