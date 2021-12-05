@@ -25,7 +25,7 @@ const seed = async ()=>{
             care:80,
             boredom:50,
             body:'body_fuzzy',
-            eyes: 'eyes_pretty',
+            eyes: 'eyes_cute',
             mouth:'mouth_simple',
             nose: 'nose_cute',
             coins:1000
@@ -78,7 +78,7 @@ const seed = async ()=>{
          },
          {
              RascalId:1,
-            name: 'eyes_pretty',
+            name: 'eyes_cute',
             type:'eyes'
          },
          {
