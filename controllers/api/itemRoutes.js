@@ -25,16 +25,28 @@ router.get('/unlocked/:id',(req,res)=>{
 router.put('/equipped/:id',(req,res)=>{
     for (let i = 0; i < req.body.length; i++) {
         const item = req.body[i];
-        item.id=i+1
-        item.RascalId=req.params.id
-        EquippedItem.upsert(item).then(data=>{
-            if(i==req.body.length-1){
-                res.json('success')
-            }
-        }).catch(err=>{
-            console.log(err)
-            res.json(err)
-        })
+        if(!item){
+            EquippedItem.destroy({where:{RascalId:req.params.id,id:i+1}}).then(data=>{
+                if(i==req.body.length-1){
+                    res.json('success')
+                }
+            }).catch(err=>{
+                console.log(err)
+                res.json(err)
+            })
+        }else{
+            
+            item.id=i+1
+            item.RascalId=req.params.id
+            EquippedItem.upsert(item).then(data=>{
+                if(i==req.body.length-1){
+                    res.json('success')
+                }
+            }).catch(err=>{
+                console.log(err)
+                res.json(err)
+            })
+        }
         
     }
 })
