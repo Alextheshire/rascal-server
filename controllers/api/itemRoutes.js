@@ -39,12 +39,29 @@ router.put('/equipped/:id',(req,res)=>{
     }
 })
 router.post('/unlocked/:id',(req,res)=>{
-    UnlockedItem.create({...req.body,RascalId:req.params.id}).then(data=>{
-        res.json(data)
-    }).catch(err=>{
-        console.log(err)
-        res.json(err)
-    })
+    if(req.body[0]){
+        for (let i = 0; i < req.body.length; i++) {
+            const item = req.body[i];
+            item.RascalId=req.params.id
+            UnlockedItem.create(item).then(data=>{
+                if(i==req.body.length-1){
+                    res.json('success')
+                }
+            }).catch(err=>{
+                console.log(err)
+                res.json(err)
+            })
+            
+        }
+    }else{
+
+        UnlockedItem.create({...req.body,RascalId:req.params.id}).then(data=>{
+            res.json(data)
+        }).catch(err=>{
+            console.log(err)
+            res.json(err)
+        })
+    }
 })
 // /////////// ANTIQUATED
 router.post('/postequip/:id',(req,res)=>{
