@@ -25,7 +25,7 @@ router.get('/unlocked/:id',(req,res)=>{
 router.put('/equipped/:id',(req,res)=>{
     for (let i = 0; i < req.body.length; i++) {
         const item = req.body[i];
-        if(item.name){
+        if(item.name==="empty"){
             EquippedItem.destroy({where:{RascalId:req.params.id,id:i+1}}).then(data=>{
                 if(i==req.body.length-1){
                     res.json('success')
