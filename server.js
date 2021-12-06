@@ -8,11 +8,11 @@ const cors = require("cors");
 const routes = require("./controllers");
 const {User, Rascal, EquippedItem,UnlockedItem} = require('./models');
 //LOCAL
-app.use(cors())
+// app.use(cors())
 // DEPLOYED
-// app.use(cors({
-//     origin:["https://pocket-rascal.herokuapp.com/"]
-// }))
+app.use(cors({
+    origin:["https://pocket-rascal.herokuapp.com"]
+}))
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
