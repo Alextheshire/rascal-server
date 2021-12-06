@@ -38,6 +38,7 @@ router.post("/new/:id",(req,res)=>{
     })
 })
 router.put("/update/:id",(req,res)=>{
+    delete req.body.id
     console.log(req.body)
     Rascal.update(req.body,{where:{UserId:req.params.id}}).then(updatedRascal=>{
         res.json(updatedRascal)
