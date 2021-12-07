@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User, Rascal } = require('../../models');
+const { User, Rascal, EquippedItem,UnlockedItem } = require('../../models');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const tokenAuth = require("../../middleware/tokenAuth")
@@ -71,5 +71,13 @@ router.get("/verify",tokenAuth,(req,res)=> {
         res.json({err:err,message:"InvalidToken"})
     })
 })
-
+router.delete("/delete/:id",(req,res)=>{
+    Rascal.findOne({where:{UserId:req.params.id}}).then(rasc=>{
+        EquippedItem.destroy({where:{RascalId:rasc.id}})
+        UnlockedItem.destroy({where:{RascalId:rasc.id}})
+        Rascal.destroy({where:{id:rasc.id}})
+        User.destroy({where:{id:req.params.id}})
+        res.send('ok')
+    })
+})
 module.exports = router
